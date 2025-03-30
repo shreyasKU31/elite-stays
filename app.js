@@ -7,6 +7,7 @@ const Listing = require("./models/listing.js");
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
 
 //Connecting to DB
 const MONGO_URL = "mongodb://localhost:27017/elitestays";
@@ -32,6 +33,15 @@ app.get("/listings", (req, res) => {
   Listing.find().then((r) => {
     let listings = r;
     res.render("listings.ejs", { listings });
+  });
+});
+
+//Route to show a listing in detail
+app.get("/listings/:id", (req, res) => {
+  const { id } = req.params;
+  Listing.findById(id).then((r) => {
+    const list = r;
+    res.render("list.ejs", { list });
   });
 });
 
