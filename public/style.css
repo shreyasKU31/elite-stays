@@ -6,6 +6,10 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
+h1 {
+  text-align: center;
+  margin-top: 2rem;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -19,11 +23,12 @@
 }
 .card {
   width: 300px !important;
-  height: 350px !important;
-  background-color: aqua !important;
-  border-radius: 12px;
+  height: 400px !important;
+  /* background-color: aqua !important; */
+  border-radius: 16px;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
+  border: none;
 }
 a .card:hover {
   transform: scale(1.05);
@@ -38,6 +43,7 @@ a .card:hover {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
+  border-radius: 16px;
 }
 a {
   text-decoration: none;
@@ -45,6 +51,13 @@ a {
 }
 .cardContent {
   padding: 0.75rem;
+}
+.cardContent p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.cardContent span {
+  font-size: 0.8rem;
 }
 
 .navbar {
@@ -57,8 +70,54 @@ footer {
   padding: 20px;
   gap: 8px;
   margin-top: 20px;
+  background-color: rgb(240, 240, 240);
 }
 
 .social {
   font-size: 2rem;
+}
+.links {
+  display: flex;
+  gap: 12px;
+}
+.cardContent h3 {
+  font-size: 1rem !important;
+}
+.listings {
+  margin-top: 40px;
+}
+.createBtn {
+  padding: 12px 24px;
+  background-color: rgb(255, 95, 95);
+  border-radius: 50px;
+  color: white;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+.createBtn:hover {
+  transform: scale(1.05);
+  background-color: rgb(252, 74, 74);
+}
+
+.createForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 3rem 0;
+  width: 60%;
+}
+.create {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.form-group {
+  width: 80%;
+}
+.navbar-brand {
+  color: rgb(255, 95, 95);
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 2rem;
 }

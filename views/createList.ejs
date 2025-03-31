@@ -1,19 +1,70 @@
 <% layout("layouts/boilerplate.ejs") %>
 <body>
   <h1>Create a New Listing.</h1>
-  <form action="/listings" method="post">
-    <label for="title">Title:</label>
-    <input type="text" name="title" id="title" required />
-    <label for="title">Discription:</label>
-    <input type="text" name="discription" id="title" required />
-    <label for="image">Image:</label>
-    <input type="text" name="image" id="image" />
-    <label for="price">Price:</label>
-    <input type="number" name="price" id="price" required />
-    <label for="location">Location:</label>
-    <input type="text" name="location" id="location" required />
-    <label for="country">Country:</label>
-    <input type="text" name="country" id="country" required />
-    <button type="submit">Create</button>
-  </form>
+  <div class="create">
+    <form class="createForm" action="/listings" method="post">
+      <div class="form-group">
+        <label for="formGroupExampleInput">Title:</label>
+        <input
+          name="title"
+          type="text"
+          class="form-control"
+          id="formGroupExampleInput"
+          placeholder="Enter Title "
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Discription:</label>
+        <input
+          name="discription"
+          type="text"
+          class="form-control"
+          id="formGroupExampleInput2"
+          placeholder="enter discription"
+        />
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput3">Image:</label>
+        <input
+          name="image"
+          type="text"
+          class="form-control"
+          id="formGroupExampleInput3"
+          placeholder="Add Image URL / Link"
+        />
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput4">Price:</label>
+        <input
+          name="price"
+          type="number"
+          class="form-control"
+          id="formGroupExampleInput4"
+          placeholder="Enter Price"
+        />
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput5">Location:</label>
+        <input
+          name="location"
+          type="text"
+          class="form-control"
+          id="formGroupExampleInput5"
+          placeholder="Enter City Name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput6">Country:</label>
+        <input
+          name="country"
+          type="text"
+          class="form-control"
+          id="formGroupExampleInput6"
+          placeholder="Enter Country"
+        />
+      </div>
+      <button type="submit" class="createBtn">Create New List</button>
+    </form>
+  </div>
 </body>
