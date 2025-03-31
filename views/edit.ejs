@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Listing</title>
+  </head>
+  <body>
+    <form action="/listings/<%= editList._id %>?_method=PUT" method="POST">
+      <label for="title">Title:</label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        required
+        value="<%= editList.title %>"
+      />
+      <label for="title">Discription:</label>
+      <input
+        type="text"
+        name="discription"
+        id="title"
+        required
+        value="<%= editList.discription %>"
+      />
+      <label for="image">Image:</label>
+      <input type="text" name="image" id="image" />
+      <label for="price">Price:</label>
+      <input
+        type="number"
+        name="price"
+        id="price"
+        required
+        value="<%= editList.price %>"
+      />
+      <label for="location">Location:</label>
+      <input
+        type="text"
+        name="location"
+        id="location"
+        required
+        value="<%= editList.location %>"
+      />
+      <label for="country">Country:</label>
+      <input
+        type="text"
+        name="country"
+        id="country"
+        required
+        value="<%= editList.country %>"
+      />
+      <button type="submit">Create</button>
+    </form>
+  </body>
+</html>
