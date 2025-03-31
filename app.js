@@ -4,12 +4,14 @@ const mongoose = require("mongoose");
 const path = require("path");
 const Listing = require("./models/listing.js");
 var methodOverride = require("method-override");
+const ejsmate = require("ejs-mate");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.engine("ejs", ejsmate);
 
 //Connecting to DB
 const MONGO_URL = "mongodb://localhost:27017/elitestays";

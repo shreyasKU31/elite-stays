@@ -18,9 +18,9 @@
   row-gap: 24px;
 }
 .card {
-  width: 300px;
-  height: 350px;
-  background-color: aqua;
+  width: 300px !important;
+  height: 350px !important;
+  background-color: aqua !important;
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
@@ -30,14 +30,14 @@ a .card:hover {
 }
 
 .img {
-  width: 100%;
-  height: 70%;
+  width: 100% !important;
+  height: 70% !important;
 }
 
 .img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
 a {
   text-decoration: none;
@@ -45,4 +45,20 @@ a {
 }
 .cardContent {
   padding: 0.75rem;
+}
+
+.navbar {
+  height: 5rem;
+}
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.social {
+  font-size: 2rem;
 }

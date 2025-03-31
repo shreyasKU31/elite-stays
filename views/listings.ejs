@@ -1,35 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Easy Stays | Listings</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>Listings</h1>
-      <form action="/listings/new" method="get">
-        <button>Create new listing</button>
-      </form>
-      <div class="listings">
-        <% for(let listing of listings){ %>
-        <a href="/listings/<%= listing._id %>">
-          <div class="card">
-            <div class="img">
-              <img src="<%= listing.image %>" alt="" />
-            </div>
-            <div class="cardContent">
-              <h3><%= listing.title %></h3>
-              <p>
-                &#8377; <%= listing.price ?
-                listing.price.toLocaleString("en-in") : "Price not available" %>
-              </p>
-            </div>
+<% layout("layouts/boilerplate.ejs") %>
+<body>
+  <div class="container">
+    <h1>Listings</h1>
+    <form action="/listings/new" method="get">
+      <button>Create new listing</button>
+    </form>
+    <div class="listings">
+      <% for(let listing of listings){ %>
+      <a href="/listings/<%= listing._id %>">
+        <div class="card">
+          <div class="img">
+            <img src="<%= listing.image %>" alt="" />
           </div>
-        </a>
-        <%}%>
-      </div>
+          <div class="cardContent">
+            <h3><%= listing.title %></h3>
+            <p>
+              &#8377; <%= listing.price ? listing.price.toLocaleString("en-in")
+              : "Price not available" %>
+            </p>
+          </div>
+        </div>
+      </a>
+      <%}%>
     </div>
-  </body>
-</html>
+  </div>
+</body>
