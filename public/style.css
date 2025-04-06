@@ -9,6 +9,7 @@
 h1 {
   text-align: center;
   margin-top: 2rem;
+  font-weight: bold;
 }
 .container {
   display: flex;
@@ -37,6 +38,11 @@ a .card:hover {
 .img {
   width: 100% !important;
   height: 70% !important;
+}
+.listImage {
+  width: 50rem;
+  height: 35rem;
+  object-fit: cover;
 }
 
 .img img {
@@ -98,6 +104,10 @@ footer {
   transform: scale(1.05);
   background-color: rgb(252, 74, 74);
 }
+i {
+  color: rgb(255, 95, 95);
+  margin-right: 4px;
+}
 
 .createForm {
   display: flex;
@@ -105,13 +115,9 @@ footer {
   align-items: center;
   gap: 1.5rem;
   padding: 3rem 0;
-  width: 60%;
+  margin: 0 25%;
 }
-.create {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
+
 .form-group {
   width: 80%;
 }
@@ -120,4 +126,8 @@ footer {
   font-size: 2rem;
   font-weight: bold;
   margin: 0 2rem;
+}
+.btn {
+  display: flex;
+  gap: 2rem;
 }

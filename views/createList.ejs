@@ -2,7 +2,12 @@
 <body>
   <h1>Create a New Listing.</h1>
   <div class="create">
-    <form class="createForm" action="/listings" method="post">
+    <form
+      class="createForm needs-validation"
+      action="/listings"
+      method="post"
+      novalidate
+    >
       <div class="form-group">
         <label for="formGroupExampleInput">Title:</label>
         <input
@@ -13,6 +18,8 @@
           placeholder="Enter Title "
           required
         />
+        <div class="valid-feedback"></div>
+        <div class="invalid-feedback">Please choose a Title.</div>
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Discription:</label>
@@ -22,7 +29,10 @@
           class="form-control"
           id="formGroupExampleInput2"
           placeholder="enter discription"
+          required
         />
+        <div class="valid-feedback"></div>
+        <div class="invalid-feedback">Please Discription of Listing.</div>
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput3">Image:</label>
@@ -33,6 +43,8 @@
           id="formGroupExampleInput3"
           placeholder="Add Image URL / Link"
         />
+        <div class="valid-feedback"></div>
+        <div class="invalid-feedback">Please paste the Image Link.</div>
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput4">Price:</label>
@@ -42,7 +54,10 @@
           class="form-control"
           id="formGroupExampleInput4"
           placeholder="Enter Price"
+          required
         />
+        <div class="valid-feedback"></div>
+        <div class="invalid-feedback">Please Select Appropriate Price.</div>
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput5">Location:</label>
@@ -52,7 +67,12 @@
           class="form-control"
           id="formGroupExampleInput5"
           placeholder="Enter City Name"
+          required
         />
+        <div class="valid-feedback"></div>
+        <div class="invalid-feedback">
+          Please Enter the Location of Listing.
+        </div>
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput6">Country:</label>
@@ -62,9 +82,13 @@
           class="form-control"
           id="formGroupExampleInput6"
           placeholder="Enter Country"
+          required
         />
+        <div class="valid-feedback"></div>
+        <div class="invalid-feedback">Please choose a Country.</div>
       </div>
       <button type="submit" class="createBtn">Create New List</button>
     </form>
   </div>
 </body>
+<script src="/style.js"></script>

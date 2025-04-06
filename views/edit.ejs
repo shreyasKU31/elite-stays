@@ -1,48 +1,86 @@
 <% layout("layouts/boilerplate.ejs") %>
 <body>
-  <form action="/listings/<%= editList._id %>?_method=PUT" method="POST">
-    <label for="title">Title:</label>
-    <input
-      type="text"
-      name="title"
-      id="title"
-      required
-      value="<%= editList.title %>"
-    />
-    <label for="title">Discription:</label>
-    <input
-      type="text"
-      name="discription"
-      id="title"
-      required
-      value="<%= editList.discription %>"
-    />
-    <label for="image">Image:</label>
-    <input type="text" name="image" id="image" />
-    <label for="price">Price:</label>
-    <input
-      type="number"
-      name="price"
-      id="price"
-      required
-      value="<%= editList.price %>"
-    />
-    <label for="location">Location:</label>
-    <input
-      type="text"
-      name="location"
-      id="location"
-      required
-      value="<%= editList.location %>"
-    />
-    <label for="country">Country:</label>
-    <input
-      type="text"
-      name="country"
-      id="country"
-      required
-      value="<%= editList.country %>"
-    />
-    <button type="submit">Create</button>
+  <form
+    class="createForm needs-validation"
+    novalidate
+    action="/listings"
+    method="post"
+  >
+    <div class="form-group">
+      <label for="validationCustom01" class="form-label">Title:</label>
+      <input
+        class="form-control"
+        type="text"
+        name="title"
+        id="validationCustom01"
+        value="<%= editList.title %>"
+        required
+      />
+
+      <div class="invalid-feedback">Please write the Title.</div>
+    </div>
+    <div class="form-group">
+      <label for="formGroupExampleInput2">Discription:</label>
+      <input
+        type="text"
+        name="discription"
+        id="formGroupExampleInput2"
+        required
+        value="<%= editList.discription %>"
+        class="form-control"
+      />
+      <div class="invalid-feedback">Please Discribe the listing.</div>
+    </div>
+    <div class="form-group">
+      <label for="formGroupExampleInput3">Image:</label>
+      <input
+        name="image"
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput3"
+        placeholder="Add Image URL / Link"
+        value="<%= editList.image %>"
+      />
+      <div class="invalid-feedback">Enter Image Link.</div>
+    </div>
+    <div class="form-group">
+      <label for="formGroupExampleInput4">Price:</label>
+      <input
+        class="form-control"
+        placeholder="Enter Price"
+        type="number"
+        name="price"
+        id="formGroupExampleInput4"
+        required
+        value="<%= editList.price %>"
+      />
+      <div class="invalid-feedback">Select Price</div>
+    </div>
+    <div class="form-group">
+      <label for="formGroupExampleInput5">Location:</label>
+      <input
+        name="location"
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput5"
+        placeholder="Enter City Name"
+        value="<%= editList.location %>"
+      />
+      <div class="invalid-feedback">Please Write Location.</div>
+    </div>
+    <div class="form-group">
+      <label for="formGroupExampleInput6">Country:</label>
+      <input
+        name="country"
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput6"
+        placeholder="Enter Country"
+        value="<%= editList.country %>"
+      />
+      <div class="invalid-feedback">Please write the Country.</div>
+    </div>
+    <button type="submit" class="createBtn">Edit List</button>
   </form>
 </body>
+<script src="/style.js"></script>
