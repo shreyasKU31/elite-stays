@@ -22,7 +22,7 @@ h1 {
   column-gap: 24px;
   row-gap: 24px;
 }
-.card {
+.listingcard {
   width: 300px !important;
   height: 400px !important;
   /* background-color: aqua !important; */

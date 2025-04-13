@@ -2,7 +2,7 @@
 <body>
   <div class="d-flex flex-column align-items-center">
     <div>
-      <h1><%= list.title%></h1>
+      <h1><%= list.title %></h1>
       <img
         src="<%= list.image %>"
         alt=""
@@ -26,6 +26,66 @@
       <form action="/listings/<%= list._id %>?_method=DELETE" method="post">
         <button type="submit" class="createBtn">Delete List</button>
       </form>
+    </div>
+
+    <div class="col-6 mb-3">
+      <hr />
+      <h4>Leave a Review</h4>
+      <form
+        action="/listings/<%= list._id %>/review"
+        method="POST"
+        novalidate
+        class="needs-validation"
+      >
+        <div class="mb-3 mt-3">
+          <Label for="rating" class="form-label">Rating : </Label>
+          <input
+            type="range"
+            id="rating"
+            min="1"
+            max="5"
+            step="1"
+            name="rating"
+            class="form-range"
+          />
+        </div>
+        <div class="mb-3 mt-3 form-group">
+          <label for="comment" class="form-label">Comment : </label>
+          <textarea
+            name="comment"
+            id="comment"
+            cols="25"
+            rows="5"
+            class="form-control"
+            required
+          ></textarea>
+          <div class="invalid-feedback">
+            Please Tell us what was your Expereince.
+          </div>
+        </div>
+        <button class="btn btn-outline-dark">Submit Review</button>
+      </form>
+      <hr />
+      <h4>Reviews</h4>
+
+      <div class="row">
+        <% for(review of list.reviews){%>
+        <div class="card col-5 ms-3 mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Hane Doe</h5>
+            <p class="card-text"><%= review.comment %></p>
+            <p class="card-text"><%= review.rating %> stars</p>
+          </div>
+          <form
+            action="/listings/<%= list.id %>/review/<%= review.id %>?_method=DELETE"
+            method="post"
+            class="mb-3"
+          >
+            <button class="btn btn-sm btn-dark">Delete</button>
+          </form>
+        </div>
+        <%}%>
+      </div>
     </div>
   </div>
 </body>
