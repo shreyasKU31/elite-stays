@@ -2,11 +2,11 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
-
+const session = require("express-session");
 const methodOverride = require("method-override");
 const ejsmate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
-
+const flash = require("connect-flash");
 const listings = require("./routes/listings.js");
 const reviews = require("./routes/reviews.js");
 
@@ -31,9 +31,29 @@ connect()
     console.log(err);
   });
 
+const sessionOptions = {
+  secret: "secretkey",
+  resave: false,
+  saveUninitialized: true,
+  cookies: {
+    expires: Date.now() * 7 * 24 * 60 * 60 * 1000,
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+    httpOnly: true,
+  },
+};
+
 //Route for home
 app.get("/", (req, res) => {
   res.send("This is a root page");
+});
+
+app.use(session(sessionOptions));
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
 });
 
 app.use("/listings", listings); //Listing Route
