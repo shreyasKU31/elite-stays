@@ -7,8 +7,12 @@ const methodOverride = require("method-override");
 const ejsmate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const flash = require("connect-flash");
-const listings = require("./routes/listings.js");
-const reviews = require("./routes/reviews.js");
+const listingsRouter = require("./routes/listings.js");
+const reviewsRouter = require("./routes/reviews.js");
+const userRouter = require("./routes/user.js");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user.js");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -31,6 +35,12 @@ connect()
     console.log(err);
   });
 
+//Route for home
+app.get("/", (req, res) => {
+  res.send("This is a root page");
+});
+
+// ************************************************** Sessions **************************************************
 const sessionOptions = {
   secret: "secretkey",
   resave: false,
@@ -42,22 +52,28 @@ const sessionOptions = {
   },
 };
 
-//Route for home
-app.get("/", (req, res) => {
-  res.send("This is a root page");
-});
-
 app.use(session(sessionOptions));
 app.use(flash());
+
+// ************************************************** Passport **************************************************
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
+  res.locals.currUser = req.user;
   next();
 });
 
-app.use("/listings", listings); //Listing Route
-app.use("/listings/:id/review", reviews); //Review Route
+// ************************************************** Routers **************************************************
+
+app.use("/listings", listingsRouter); //Listing Route
+app.use("/listings/:id/review", reviewsRouter); //Review Route
+app.use("/", userRouter); //Review Route
 
 // ************************************************** Errors **************************************************
 app.all("*", (req, res, next) => {
