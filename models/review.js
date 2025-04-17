@@ -14,6 +14,10 @@ const reviewScema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 module.exports = new mongoose.model("Review", reviewScema);
