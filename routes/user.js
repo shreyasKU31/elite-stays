@@ -10,23 +10,24 @@ const {
   logout,
 } = require("../controllers/users.js");
 
-router.get("/signup", (req, res) => {
-  res.render("./users/signup.ejs");
-});
+router
+  .route("/signup")
+  .get((req, res) => {
+    res.render("./users/signup.ejs");
+  })
+  .post(wrapAsync(signup));
 
-router.post("/signup", wrapAsync(signup));
-
-router.get("/login", renderLoginForm);
-
-router.post(
-  "/login",
-  saveRedirectUrl,
-  passport.authenticate("local", {
-    failureRedirect: "/login",
-    failureFlash: true,
-  }),
-  login
-);
+router
+  .route("/login")
+  .get(renderLoginForm)
+  .post(
+    saveRedirectUrl,
+    passport.authenticate("local", {
+      failureRedirect: "/login",
+      failureFlash: true,
+    }),
+    login
+  );
 
 router.get("/logout", logout);
 
