@@ -1,38 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/user.js");
 const wrapAsync = require("../utils/wrapAsync.js");
 const passport = require("passport");
 const { saveRedirectUrl } = require("../middleware.js");
+const {
+  signup,
+  renderLoginForm,
+  login,
+  logout,
+} = require("../controllers/users.js");
 
 router.get("/signup", (req, res) => {
   res.render("./users/signup.ejs");
 });
 
-router.post(
-  "/signup",
-  wrapAsync(async (req, res, next) => {
-    try {
-      let { username, email, password } = req.body;
-      const newUser = new User({ email, username });
-      const registeredUser = await User.register(newUser, password);
-      req.login(registeredUser, (err) => {
-        if (err) {
-          return next(err);
-        }
-        req.flash("success", `Welcome to EliteStays ${username}.`);
-        res.redirect("/listings");
-      });
-    } catch (err) {
-      req.flash("error", err.message);
-      res.redirect("/signup");
-    }
-  })
-);
+router.post("/signup", wrapAsync(signup));
 
-router.get("/login", (req, res) => {
-  res.render("./users/login.ejs");
-});
+router.get("/login", renderLoginForm);
 
 router.post(
   "/login",
@@ -41,20 +25,9 @@ router.post(
     failureRedirect: "/login",
     failureFlash: true,
   }),
-  async (req, res) => {
-    req.flash("success", "Welcome back to Elite Stays!");
-    res.redirect(res.locals.redirectUrl || "/listings");
-  }
+  login
 );
 
-router.get("/logout", (req, res, next) => {
-  req.logout((err) => {
-    if (err) {
-      return next(err);
-    }
-  });
-  req.flash("success", "You logged out Successfully");
-  res.redirect("/listings");
-});
+router.get("/logout", logout);
 
 module.exports = router;
