@@ -5,6 +5,7 @@
     novalidate
     action="/listings/<%= editList.id %>?_method=PUT"
     method="post"
+    enctype="multipart/form-data"
   >
     <div class="form-group">
       <label for="validationCustom01" class="form-label">Title:</label>
@@ -31,17 +32,20 @@
       />
       <div class="invalid-feedback">Please Discribe the listing.</div>
     </div>
+    <div>
+      <p>Original Image</p>
+      <img src="<%= originalImageUrl %>" alt="" />
+    </div>
     <div class="form-group">
-      <label for="formGroupExampleInput3">Image:</label>
+      <label for="formGroupExampleInput3">Upload Listing Image:</label>
       <input
         name="image"
-        type="text"
+        type="file"
         class="form-control"
         id="formGroupExampleInput3"
-        placeholder="Add Image URL / Link"
-        value="<%= editList.image %>"
       />
-      <div class="invalid-feedback">Enter Image Link.</div>
+      <div class="valid-feedback"></div>
+      <div class="invalid-feedback">Please upload the image of Listing.</div>
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput4">Price:</label>

@@ -7,6 +7,7 @@
       action="/listings"
       method="post"
       novalidate
+      enctype="multipart/form-data"
     >
       <div class="form-group">
         <label for="formGroupExampleInput">Title:</label>
@@ -35,16 +36,15 @@
         <div class="invalid-feedback">Please Discription of Listing.</div>
       </div>
       <div class="form-group">
-        <label for="formGroupExampleInput3">Image:</label>
+        <label for="formGroupExampleInput3">Upload Listing Image:</label>
         <input
           name="image"
-          type="text"
+          type="file"
           class="form-control"
           id="formGroupExampleInput3"
-          placeholder="Add Image URL / Link"
         />
         <div class="valid-feedback"></div>
-        <div class="invalid-feedback">Please paste the Image Link.</div>
+        <div class="invalid-feedback">Please upload the image of Listing.</div>
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput4">Price:</label>
