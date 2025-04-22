@@ -1,7 +1,68 @@
 <% layout("layouts/boilerplate.ejs") %>
+
+<style>
+  #filters {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    margin-bottom: 20px;
+    gap: 2rem;
+  }
+  .filter {
+    text-align: center;
+    margin-top: 20px;
+    opacity: 0.7;
+    transition: all 150ms;
+  }
+  .filter:hover {
+    opacity: 1;
+  }
+</style>
+
 <body>
   <div class="container">
-    <h1>Listings</h1>
+    <div id="filters">
+      <div class="filter">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain-sun"></i></div>
+        <p>Views</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-cow"></i></div>
+        <p>Farms</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-water"></i></div>
+        <p>Lake</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-house-chimney"></i></div>
+        <p>Mansions</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-chess-rook"></i></div>
+        <p>Castles</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-igloo"></i></div>
+        <p>Arctic</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-otter"></i></div>
+        <p>Play</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Camping</p>
+      </div>
+    </div>
     <form action="/listings/new" method="get">
       <button class="createBtn">Create new listing</button>
     </form>
