@@ -1,4 +1,8 @@
 <% layout("layouts/boilerplate.ejs") %>
+<script>
+  const mapToken = "<%= process.env.MAP_TOKEN%>";
+  const listing = <%-JSON.stringify(list)%>;
+</script>
 <body>
   <div class="d-flex flex-column align-items-center">
     <div>
@@ -57,7 +61,7 @@
         </div> -->
 
         <fieldset class="starability-slot">
-          <legend>First rating:</legend>
+          <legend>Your rating:</legend>
           <input
             type="radio"
             id="no-rate"
@@ -96,8 +100,8 @@
         <button class="btn btn-outline-dark">Submit Review</button>
         <% } %>
       </form>
+      <% if(list.reviews.length>0) {%>
       <h4>Reviews</h4>
-
       <div class="row">
         <% for(review of list.reviews){%>
         <div class="card col-5 ms-3 mb-3">
@@ -120,6 +124,12 @@
         </div>
         <%}%>
       </div>
+      <%}%>
     </div>
   </div>
+  <div class="col-6 offset-3">
+    <h3>Where you will be..</h3>
+    <div id="map"></div>
+  </div>
 </body>
+<script src="/map.js"></script>

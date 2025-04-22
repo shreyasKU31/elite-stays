@@ -23,9 +23,8 @@ app.use(express.json());
 app.engine("ejs", ejsmate);
 
 //Connecting to DB
-const MONGO_URL = "mongodb://localhost:27017/elitestays";
 async function connect() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(process.env.MONGO_URL);
 }
 connect()
   .then(() => {
@@ -42,7 +41,7 @@ app.get("/", (req, res) => {
 
 // ************************************************** Sessions **************************************************
 const sessionOptions = {
-  secret: "secretkey",
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookies: {

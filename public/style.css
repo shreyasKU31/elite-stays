@@ -131,3 +131,8 @@ i {
   display: flex;
   gap: 2rem;
 }
+
+#map {
+  width: 50vw;
+  height: 30vw;
+}
