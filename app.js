@@ -39,7 +39,7 @@ connect()
 
 //Route for home
 app.get("/", (req, res) => {
-  res.send("This is a root page");
+  res.redirect("/listings");
 });
 
 // ************************************************** Sessions **************************************************
