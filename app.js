@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const methodOverride = require("method-override");
 const ejsmate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
@@ -13,6 +14,8 @@ const userRouter = require("./routes/user.js");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
+const { error } = require("console");
+require("dotenv").config();
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -24,7 +27,7 @@ app.engine("ejs", ejsmate);
 
 //Connecting to DB
 async function connect() {
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(process.env.ATLASDB_URL);
 }
 connect()
   .then(() => {
@@ -40,7 +43,19 @@ app.get("/", (req, res) => {
 });
 
 // ************************************************** Sessions **************************************************
+const store = MongoStore.create({
+  mongoUrl: process.env.ATLASDB_URL,
+  crypto: {
+    secret: process.env.SECRET,
+  },
+  touchAfter: 24 * 3600,
+});
+store.on("error", () => {
+  console.log(error);
+});
+
 const sessionOptions = {
+  store,
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
