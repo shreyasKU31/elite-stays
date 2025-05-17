@@ -3,7 +3,7 @@
 Elite Stays is a full-stack web application inspired by Airbnb that allows users to register, authenticate, and manage property listings with dynamic map integration. Built using Node.js, Express, MongoDB, and EJS, it includes image uploads, form validation, and secure authentication.
 
 ## 🌐 Live Demo _Coming Soon_
-[Click to go Live]((https://elite-stays.onrender.com/listings))
+[Click to go Live]([https://elite-stays.onrender.com/listings])
 
 ## 🚀 Features -
 
