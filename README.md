@@ -72,8 +72,8 @@ MAPBOX_TOKEN=your_mapbox_access_token
 
 ### Running the App
 
-`bash npm start`
-`Visit `http://localhost:3000`in your browser.
+`npm start`
+`Visit `http://localhost:3000` in your browser.
 
 ## 🔗 Routes Overview -
 
